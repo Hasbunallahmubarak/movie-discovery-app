@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Movie Application by Hmabiola</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width = device-width,initial-scale = 1.0"/>
+	<meta name="description" content="This web discovery applicaiton is one of the works of Hmabiola. API used was sourced from TMDB."/>
+	<meta name="keywords" content="Hmabiola works, Hmabiola, Hasbunallah Mubarak Abiola works, Front-end devloper"/>
+	<link rel="icon" href="icons/logo.gif">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-icons.css"/>
+	<link rel="stylesheet" type="text/css" href="css/Movie_application.css">
+	<script defer src="js/slider-script.js"></script>
+	<script defer src="js/tvshow-main.js"></script>
+</head>
+<body>
+	<nav>
+		<span><a href="#"><img src="icons/logo.gif"></a></span>
+		<form action="#" id="form">
+			<input type="text" id="inputArea" placeholder="Search Tv shows...">
+		</form>
+		<div class="nav-links">
+			<a href="index.html">Home</a>
+			<a href="index.html#movie_section">Movies</a>
+			<a href="#tv_section" id="tvshows">Tv shows</a>
+		</div>
+		<span id="mobile">&#9776;</span>
+	</nav>
+	<header class="slide-container">
+		<div class="container">
+			<div class="slide" style="background-image: url('Images/hero.png');">
+				<div class="slide-content">
+					<h2>John wick</h2>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias, veritatis obcaecati. Deserunt id tempora vero consectetur ut cumque tenetur voluptate quasi eligendi facilis itaque magnam, obcaecati animi ad! Eveniet, voluptatibus.
+					Asperiores nulla iste.</p>
+					<div class="desc-details">
+						<p>Action</p>
+						<p>Crime</p>
+						<p class="desc-year">2023</p>
+					</div>	
+					<a href="javascript:void(0)" id="play-btn"><i class="icon bi-play-btn"></i>&nbsp;&nbsp;&nbsp;Watch Now</a>
+				</div>
+			</div>
+			<div class="slide" style="background-image: url('Images/twilight.jpg');"></div>
+			<div class="slide" style="background-image: url('Images/Mouse_detective.jpg');"></div>
+			<div class="slide" style="background-image: url('Images/Idiots.png');"></div>
+			<div class="slide" style="background-image: url('Images/kbc.jpg');"></div>
+			<div class="controls">
+				<button class="left-btn">&#10094;</button>
+				<button class="right-btn">&#10095;</button>
+			</div>
+		</div>
+	</header>
+	<section id="tv_section">
+		<h2>What's Popular?</h2>
+		<div id="tv-show-container">
+			<div class="movie">
+				<img src="Images/insight.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Insight</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			<div class="movie">
+				<img src="Images/inception.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">inception</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			
+			<div class="movie">
+				<img src="Images/capone.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Capone</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			
+			<div class="movie">
+				<img src="Images/ceo.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Ceo</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			<div class="movie">
+				<img src="Images/game.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Game</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			
+			<div class="movie">
+				<img src="Images/goodfellas.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Good fellas</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			
+			<div class="movie">
+				<img src="Images/delhi.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Delhi</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			<div class="movie">
+				<img src="Images/race.jpg" alt="">
+				<div class="movie-decription">
+					<h3 class="movie-title">Race</h3>
+					<span class="movie-info">
+						<p class="year">Release date : 2020</p>
+						<p class="rating">0.5</p>
+					</span>
+				</div>
+			</div>
+			
+		</div>
+		<div id="pagination">
+			<ul>
+				<li id="prev">previous</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li class="hide">6</li>
+				<li class="hide">7</li>
+				<li class="hide">8</li>
+				<li class="hide">9</li>
+				<li id="next">next</li>
+			</ul>
+		</div>
+	</section>
+	<div id="side-nav">
+		<span id="close"><i>&times</i></span>
+		<form action="#" id="form">
+			<input type="text" id="inputArea" placeholder="Search Tv shows...">
+		</form>
+		<div class="nav-links">
+			<a href="index.html"><i class="icon bi-house"></i> &nbsp;Home</a>
+			<a href="index.html#movie_section"><i class="icon bi-film"></i> &nbsp;Movies</a>
+			<a href="#tv_section"><i class="icon bi-tv"></i> &nbsp;Tv shows</a>
+		</div>
+		<div class="socials">
+			<a href=" https://www.linkedin.com/in/hasbunallah-mubarak-5b3172253/ "><i class="icon bi-linkedin"></i></a>
+			<a href=" https://github.com/Hasbunallahmubarak "><i class="icon bi-github"></i></a>
+			<a href=" https://wa.me/2348127892388?text=Hello mubarak, I viewed your movie-discovery project and would love to further engage you on that. Thank you!"><i class="icon bi-whatsapp"></i></a>
+			<a href="mailto: hasbunallahmubarak@gmail.com"><i class="icon bi-envelope"></i></a>
+			<a href=" https://www.facebook.com/mubarak.hasbunallah"><i class="icon bi-facebook"></i></a>
+		</div>
+	</div>
+	<div id="overlay"></div>
+	<footer>
+		<div>
+			<p>Movie Discovery Application &copy; 2024  ||  Developed by <a href="https://hasbunallahmubarak.github.io/Hmabiola-Portfolio/" >Hmabiola</a></p>
+		</div>
+		<div class="socials">
+			<a href=" https://www.linkedin.com/in/hasbunallah-mubarak-5b3172253/ "><i class="icon bi-linkedin"></i></a>
+			<a href=" https://github.com/Hasbunallahmubarak "><i class="icon bi-github"></i></a>
+			<a href=" https://wa.me/2348127892388?text=Hello mubarak, I viewed your movie-discovery project and would love to further engage you on that. Thank you!"><i class="icon bi-whatsapp"></i></a>
+			<a href="mailto: hasbunallahmubarak@gmail.com"><i class="icon bi-envelope"></i></a>
+			<a href=" https://www.facebook.com/mubarak.hasbunallah"><i class="icon bi-facebook"></i></a>
+		</div>
+	</footer>
+	
+</body>
+</html>
