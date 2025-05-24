@@ -202,21 +202,17 @@ function trailerFunc(id, overview, title) {
               <button id="close-trailerContainer">Close</button>
           `;
         trailerContainer.append(trailerDiv)
-        const pay = document.querySelector('#overview');
-        
+        //Keeps paragraph from overflowing
+        const paragraph = document.querySelector('#overview');     
         const maxWords = 40 ; // Set maximum number of words
-
         // Get the original text
-        const text = pay.textContent.trim();
-
+        const text = paragraph.textContent.trim();
         // Split into words
         const words = text.split(/\s+/);
-
         if (words.length > maxWords) {
           // Keep only the first maxWords words and add ellipsis
-          pay.textContent = words.slice(0, maxWords).join(' ') + '...';
+          paragraph.textContent = words.slice(0, maxWords).join(' ') + '...';
         }
-
 
         if(trailer){
           document.getElementById("close-trailerContainer").addEventListener("click", () => {

@@ -173,11 +173,22 @@ function trailerFunc(id, overview, title) {
             <iframe src=${iframeSrc} frameborder="0"></iframe>
             <div class="overview-content">
               <h2 class="title">${title}</h2>
-              <p class="overview">${overview}</p>
+              <p class="overview" id="overview">${overview}</p>
             </div>
             <button id="close-trailerContainer">Close</button>
         `;
-      trailerContainer.append(trailerDiv)
+      trailerContainer.append(trailerDiv);
+      //Keeps paragraph from overflowing
+        const paragraph = document.querySelector('#overview');     
+        const maxWords = 40 ; // Set maximum number of words
+        // Get the original text
+        const text = paragraph.textContent.trim();
+        // Split into words
+        const words = text.split(/\s+/);
+        if (words.length > maxWords) {
+          // Keep only the first maxWords words and add ellipsis
+          paragraph.textContent = words.slice(0, maxWords).join(' ') + '...';
+        }
       if(trailer){
         document.getElementById("close-trailerContainer").addEventListener("click", () => {
           iframeSrc = "";
