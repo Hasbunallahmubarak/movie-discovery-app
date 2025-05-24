@@ -41,12 +41,21 @@ async function getMovies(url) {
           `;
     }
     slides.forEach((slide, index) => {
+      // console.log()
       slide.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${data.results[index].backdrop_path})`;
       slide.innerHTML = `<div class="slide-content">
 					<h2>${data.results[index].original_title}</h2>
 					<p>${data.results[index].overview}.</p>
-			
+          <span>${data.results[index].id}.</span>
 				</div>`;
+      slide.addEventListener("click", () => {
+        trailerContainer.style.display = "flex";
+        let id = document.querySelector(".active .slide-content span").innerHTML;
+        let overview = document.querySelector(".active .slide-content p").innerHTML;
+        let title = document.querySelector(".active .slide-content h2").innerHTML;
+        trailerFunc(id, overview, title)
+        // console.log(id, overview, title)
+      })
     })
     showMovies(data.results);
     paginationFunc()
@@ -76,7 +85,7 @@ function showMovies(movies) {
           trailerContainer.style.display = "flex";
           console.log(id)
           trailerFunc(id, overview, title)
-      })
+        });
       moviesContainer.appendChild(movieDisplayContainer);
     });
   }
@@ -186,29 +195,29 @@ function trailerFunc(id, overview, title) {
         alert(`Couldn't preview "${title}" trailer`)
       }
       listOfTrailers.forEach(trailer => {
-      if (trailer.type == "Trailer"){
-        trailerKey = trailer.key; 
-        iframeSrc = `https://www.youtube.com/embed/${trailerKey}`;
-      } else if (trailer.type === "Teaser") {
-        trailerKey = trailer.key;
-      } else if(trailer.type == "Featurette"){
-        trailerKey = trailer.key;
-      }
-      trailerDiv.innerHTML = `
-            <iframe src=${iframeSrc} frameborder="0"></iframe>
-            <div class="overview-content">
-              <h2 class="title">${title}</h2>
-              <p class="overview">${overview}</p>
-            </div>
-            <button id="close-trailerContainer">Close</button>
-        `;
-      trailerContainer.append(trailerDiv)
-      if(trailer){
-        document.getElementById("close-trailerContainer").addEventListener("click", () => {
-          iframeSrc = "";
-          trailerDiv.innerHTML = "";
-          trailerContainer.style.display = "none";
-        // console.log("close trailer container")
+        if (trailer.type == "Trailer"){
+          trailerKey = trailer.key; 
+          iframeSrc = `https://www.youtube.com/embed/${trailerKey}`;
+        } else if (trailer.type === "Teaser") {
+          trailerKey = trailer.key;
+        } else if(trailer.type == "Featurette"){
+          trailerKey = trailer.key;
+        }
+        trailerDiv.innerHTML = `
+              <iframe src=${iframeSrc} frameborder="0"></iframe>
+              <div class="overview-content">
+                <h2 class="title">${title}</h2>
+                <p class="overview">${overview}</p>
+              </div>
+              <button id="close-trailerContainer">Close</button>
+          `;
+        trailerContainer.append(trailerDiv)
+        if(trailer){
+          document.getElementById("close-trailerContainer").addEventListener("click", () => {
+            iframeSrc = "";
+            trailerDiv.innerHTML = "";
+            trailerContainer.style.display = "none";
+          // console.log("close trailer container")
       });
       } else {
         trailerContainer.style.display = "none";
