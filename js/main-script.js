@@ -103,6 +103,7 @@ formElement_mobile.addEventListener("submit", (elem) => {
 function formFunc(elem) {
   const searchValue = searchElement.value || searchElement_mobile.value;
   searchValue.trim();
+  // console.log(encodeURI("Hello%20mubarak,%20I%20viewed%20your%20movie-discovery%20project%20and%20would%20love%20to%20further%20engage%20you%20on%20that.%20Thank%20you!"))
   elem.preventDefault();
   if (searchAPI && searchValue != "") {
     getMovies(`${searchAPI}${encodeURI(searchValue)}`);
