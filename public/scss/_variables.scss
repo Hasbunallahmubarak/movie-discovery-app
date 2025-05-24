@@ -1,0 +1,19 @@
+$primary-color: #22254b;
+$secondary-color:#373b69;
+$extract-color: brown;
+$new-color : #5edf7ae0;
+$font-color: #fff;
+
+@mixin flex-center{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin background-centering{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@mixin all-transitioning($time) {
+    transition: all $time ease-in-out;
+}
