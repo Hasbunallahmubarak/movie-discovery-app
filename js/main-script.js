@@ -103,10 +103,9 @@ formElement_mobile.addEventListener("submit", (elem) => {
 function formFunc(elem) {
   const searchValue = searchElement.value || searchElement_mobile.value;
   searchValue.trim();
-  console.log(searchValue)
   elem.preventDefault();
   if (searchAPI && searchValue != "") {
-    getMovies(`${searchAPI}${searchValue}`);
+    getMovies(`${searchAPI}${encodeURI(searchValue)}`);
     searchElement.value = "";
     searchElement_mobile.value = "";
   } else {
