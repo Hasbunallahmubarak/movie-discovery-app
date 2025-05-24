@@ -29,19 +29,18 @@ const startPage = 1;
 const movieAPI = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=b114767ad9998603bee1d4243c656596&&page=`;
 const imageAPI = "https://image.tmdb.org/t/p/w500/";
 const searchAPI = 'https://api.themoviedb.org/3/search/movie?api_key=b114767ad9998603bee1d4243c656596&&query=';
-// let storedData = movieAPI;
 getMovies(`${movieAPI}${startPage}`);
 async function getMovies(url) {
   try {
     const result = await fetch(url);
     const data = await result.json();
-    if (data.results == 0) {
+    console.log(data.results.length)
+    if (data.results.length === 0) {
       moviesContainer.innerHTML = `
           <h3 class = ${notFound()}> Movie <span>${searchElement.value}</span> Cannot Be Found!</h3>
           `;
     }
     slides.forEach((slide, index) => {
-      // console.log()
       slide.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${data.results[index].backdrop_path})`;
       slide.innerHTML = `<div class="slide-content">
 					<h2>${data.results[index].original_title}</h2>
@@ -67,7 +66,6 @@ function showMovies(movies) {
   moviesContainer.innerHTML = "";
   if (Array.isArray(movies)) {
     movies.forEach((movie) => {
-      // console.log(movie)
       const { poster_path, id, release_date, title, overview, vote_average } = movie;
       const movieDisplayContainer = document.createElement("div");
       movieDisplayContainer.classList.add("movie");
@@ -89,10 +87,7 @@ function showMovies(movies) {
       moviesContainer.appendChild(movieDisplayContainer);
     });
   }
-
-  // 
 }
-// console.log(`${movieAPI}${startPage}`)
 //Search movies based on user input value
 formElement.addEventListener("submit", (elem) => {
   formFunc(elem)
@@ -103,7 +98,6 @@ formElement_mobile.addEventListener("submit", (elem) => {
 function formFunc(elem) {
   const searchValue = searchElement.value || searchElement_mobile.value;
   searchValue.trim();
-  // console.log(encodeURI("Hello%20mubarak,%20I%20viewed%20your%20movie-discovery%20project%20and%20would%20love%20to%20further%20engage%20you%20on%20that.%20Thank%20you!"))
   elem.preventDefault();
   if (searchAPI && searchValue != "") {
     getMovies(`${searchAPI}${encodeURI(searchValue)}`);
@@ -161,7 +155,6 @@ function paginationFunc() {
             currentPage = pageNum;
           }
           getMovies(`${movieAPI}${currentPage}`);
-          // console.log(`${movieAPI}${currentPage}`)
         }
       });
     })
@@ -177,7 +170,6 @@ function notFound() {
 //Introducing Movie trailer:
 const trailerDiv = document.createElement("div");
 trailerDiv.classList.add("overview-structure");
-
 function trailerFunc(id, overview, title) {
   let trailerKey = '';
   const trailerAPI = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=b114767ad9998603bee1d4243c656596`;
@@ -186,10 +178,8 @@ function trailerFunc(id, overview, title) {
     try {
       const result = await fetch(source);
       const data = await result.json();
-      // console.log(data)
       const listOfTrailers = data.results;
       let iframeSrc = `https://www.youtube.com/embed/${trailerKey}`;
-      console.log(listOfTrailers, id)
       if (listOfTrailers.length == 0) {
         trailerContainer.style.display = "none";
         alert(`Couldn't preview "${title}" trailer`)
@@ -207,24 +197,37 @@ function trailerFunc(id, overview, title) {
               <iframe src=${iframeSrc} frameborder="0"></iframe>
               <div class="overview-content">
                 <h2 class="title">${title}</h2>
-                <p class="overview">${overview}</p>
+                <p class="overview" id="overview">${overview}</p>
               </div>
               <button id="close-trailerContainer">Close</button>
           `;
         trailerContainer.append(trailerDiv)
+        const pay = document.querySelector('#overview');
+        
+        const maxWords = 40 ; // Set maximum number of words
+
+        // Get the original text
+        const text = pay.textContent.trim();
+
+        // Split into words
+        const words = text.split(/\s+/);
+
+        if (words.length > maxWords) {
+          // Keep only the first maxWords words and add ellipsis
+          pay.textContent = words.slice(0, maxWords).join(' ') + '...';
+        }
+
+
         if(trailer){
           document.getElementById("close-trailerContainer").addEventListener("click", () => {
             iframeSrc = "";
             trailerDiv.innerHTML = "";
             trailerContainer.style.display = "none";
-          // console.log("close trailer container")
       });
       } else {
         trailerContainer.style.display = "none";
       }
-      })
-      
-      
+      })     
     } catch (error) {
       console.log(error)
     }
@@ -232,7 +235,6 @@ function trailerFunc(id, overview, title) {
 }
 
 
-function closeTrailer() {
-  console.log("Close trailer")
-}
+ // Select your paragraph
 
+console.log(pay)

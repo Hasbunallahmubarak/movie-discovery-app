@@ -17,6 +17,7 @@ body{
     overflow: hidden;
     @include flex-center;
     display: none;
+    span{color: blue;}
     .overview-structure{
         border-radius: 25px;
         overflow: hidden;
@@ -401,7 +402,11 @@ footer{
      
 }
 @media screen and (max-width: 800px){
-    #trailer-container .overview-structure{width: 90%;height: 85%; margin-top: 5%;} 
+    #trailer-container .overview-structure{
+        width: 90%;
+        height: 85%; 
+        margin-top: 5%;
+    } 
     nav{
         padding: 10px 3%;
         #mobile{display: inline-block;}
@@ -491,7 +496,21 @@ footer{
      }
 }
 @media screen and (max-width: 600px){
-    #trailer-container .overview-structure{width: 90%;height: 80%; margin-top: 5%;} 
+    #trailer-container .overview-structure{
+        width: 90%;
+        height: 80%; 
+        margin-top: 5%;
+        .overview-content {
+            h2{
+        font-size: 5vw; 
+        letter-spacing: 0.2rem;
+        }
+        p{
+            font-size: 0.7rem;
+            letter-spacing: 0.02rem;
+        }
+        }
+    } 
     #trailer-container .overview-structure iframe{
         height: 60%;
     }

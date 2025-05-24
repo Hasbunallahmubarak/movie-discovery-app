@@ -35,7 +35,6 @@ async function getTvShows(url) {
             let overview = document.querySelector(".active .slide-content p").innerHTML;
             let title = document.querySelector(".active .slide-content h2").innerHTML;
             trailerFunc(id, overview, title)
-            console.log(id, overview, title)
           })        })
         showTv(data.results);
         paginationFunc()
@@ -45,7 +44,6 @@ async function getTvShows(url) {
 }
 
 function showTv(tv_shows) {
-    console.log(tv_shows)
     tvShowContainer.innerHTML = "";
     if (Array.isArray(tv_shows)){
       tv_shows.forEach((tv_show) => {
@@ -64,7 +62,6 @@ function showTv(tv_shows) {
       `;
         tvDisplayContainer.addEventListener("click", () => {
           trailerContainer.style.display = "flex";
-          console.log(id)
           trailerFunc(id, overview, original_name)
         })
       tvShowContainer.appendChild(tvDisplayContainer);
@@ -130,7 +127,6 @@ function paginationFunc() {
             currentPage = pageNum;
           }
           getTvShows(`${tvShowAPI}${currentPage}`);
-          console.log(`${tvShowAPI}${currentPage}`)
         }
       });
     }) 
@@ -158,11 +154,8 @@ function trailerFunc(id, overview, title) {
     try {
       const result = await fetch(source);
       const data = await result.json();
-      // console.log(data)
       const listOfTrailers = data.results;
-      console.log(listOfTrailers)
       let iframeSrc = `https://www.youtube.com/embed/${trailerKey}`;
-      console.log(listOfTrailers, id)
       if (listOfTrailers.length == 0) {
         trailerContainer.style.display = "none";
         alert(`Couldn't preview "${title}" trailer`)
@@ -190,7 +183,6 @@ function trailerFunc(id, overview, title) {
           iframeSrc = "";
           trailerDiv.innerHTML = "";
           trailerContainer.style.display = "none";
-        // console.log("close trailer container")
       });
       } else {
         trailerContainer.style.display = "none";
@@ -202,9 +194,4 @@ function trailerFunc(id, overview, title) {
       console.log(error)
     }
   }
-}
-
-
-function closeTrailer() {
-  console.log("Close trailer")
 }

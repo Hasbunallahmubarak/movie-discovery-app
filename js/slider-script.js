@@ -91,3 +91,4 @@ function closeSideNav() {
 	sideNav.style.right = "-300px";
 	overlay.style.display = "none";
 }
+
